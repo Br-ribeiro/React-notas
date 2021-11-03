@@ -8,17 +8,19 @@ class App extends Component {
   
   constructor(){
     super();
-    this.notasc = [];
-    this.state = {};
+
+    this.state = {
+      notas:[]
+    };
   }
 
   criarNota(titulo, texto){
     const novaNota = {titulo, texto};
-    this.notasc.push(novaNota);
-    console.log(this.notasc.length)
-    this.setState({
-      notas:this.notas
-    })
+    const novoArrayNotas = [...this.state.notas, novaNota]
+    const novoEstado = {
+      notas:novoArrayNotas
+    }
+    this.setState(novoEstado)
   
   }
   
@@ -26,7 +28,7 @@ class App extends Component {
     return (
       <section>
         <FormularioCadastro criarNota={this.criarNota.bind(this)} />
-        <ListaDeNotas notas={this.notasc} />
+        <ListaDeNotas notas={this.state.notas} />
       </section>
     );
   }

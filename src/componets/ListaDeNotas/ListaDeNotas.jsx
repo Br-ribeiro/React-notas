@@ -14,7 +14,7 @@ class ListaDeNotas extends Component {
          return (
             <li className="lista-notas_item" key={index}>
 
-              <CardNota />
+              <CardNota titulo={nota.titulo} texto={nota.texto}/>
 
             </li>
           );
