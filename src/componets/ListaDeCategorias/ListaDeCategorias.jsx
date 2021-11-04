@@ -2,6 +2,21 @@ import React, { Component } from 'react';
 
 class ListaDeCategorias extends React.Component {
 
+  constructor(){
+    super();
+    this.state = {categorias:[]}
+    this._novasCategorias = this._novasCategorias.bind(this);
+  }
+
+  componentDidMount(){
+    this.props.categorias.inscrever(this._novasCategorias);
+  }
+
+    _novasCategorias(categorias){
+
+      this.setState({...this.state,categorias})
+    }
+
     _handleEventoInput(evento){
         
         if(evento.key == "Enter"){
@@ -15,7 +30,7 @@ class ListaDeCategorias extends React.Component {
           <section className="lista-categorias">
 
             <ul className="lista-categorias_lista">
-                {this.props.categorias.map((categoria, index) =>{
+                {this.state.categorias.map((categoria, index) =>{
                     return <li key={index} className="lista-categorias_item">{categoria}</li>
                 })}
             </ul>
